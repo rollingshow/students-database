@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/lastnameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите фамилию" />
+
+    <EditText
+        android:id="@+id/firstnameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите имя" />
+
+    <EditText
+        android:id="@+id/groupEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите группу" />
+
+    <EditText
+        android:id="@+id/ageEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите возраст" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="save"
+            android:text="Сохранить" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="delete"
+            android:text="Удалить" />
+    </LinearLayout>
+</LinearLayout>
