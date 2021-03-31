@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">students</string>
+    <string name="searchsurname">Поиск по фамилии</string>
+    <string name="addstudent">Добавить студента</string>
+    <string name="cleartable">Очистить таблицу</string>
+    <string name="id">id</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="group">Группа</string>
+    <string name="age">Лет</string>
+    <string name="avgage">Средний возраст студентов:</string>
+    <string name="entersurname">Введите фамилию</string>
+    <string name="entername">Введите имя</string>
+    <string name="entergroup">Введите группу</string>
+    <string name="enterage">Введите возраст</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="avgageofstudent">\"Средний возраст студентов: \"</string>
 </resources>

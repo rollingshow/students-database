@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,25 +10,33 @@
         android:id="@+id/lastnameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите фамилию" />
+        android:hint="@string/entersurname"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/firstnameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите имя" />
+        android:hint="@string/entername"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/groupEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите группу" />
+        android:hint="@string/entergroup"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/ageEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите возраст" />
+        android:hint="@string/enterage"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="save"
-            android:text="Сохранить" />
+            android:text="@string/save"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/deleteButton"
@@ -48,6 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="delete"
-            android:text="Удалить" />
+            android:text="@string/delete"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
+<!--    еще раз вынесла текст в строковый ресурс-->
 </LinearLayout>

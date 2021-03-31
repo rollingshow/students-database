@@ -2,6 +2,7 @@ package com.example.students;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -18,17 +19,21 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     DBHelper helper;
-    SQLiteDatabase db;
-    ListView list;
-    SimpleCursorAdapter adapter;
-    Cursor students;
     EditText studentFilter;
-    TextView ageAvg;
-    Cursor age_avg;
+    ListView list;
+
+    SimpleCursorAdapter adapter;
     String studFilter = "";
+    SQLiteDatabase db;
+
+    TextView ageAvg;
+//    сделала приемлимые названия переменных
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         try {
             db = helper.getWritableDatabase();
-            students = db.rawQuery("SELECT * FROM " + DBHelper.TABLE, null);
+            Cursor students = db.rawQuery("SELECT * FROM " + DBHelper.TABLE, null);
             String[] student_fields = students.getColumnNames();
             int[] views = {R.id.id, R.id.lastname, R.id.firstname, R.id.group, R.id.age};
             adapter = new SimpleCursorAdapter(this, R.layout.student_list, students, student_fields, views, 0);
@@ -71,8 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     setAvgAge(studFilter);
                 }
 
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     studFilter = studentFilter.getText().toString();
@@ -97,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
             });
             list.setAdapter(adapter);
         } catch (SQLException e) {
-            Log.e("mytag", e.getLocalizedMessage());
+            Log.e("mytag", Objects.requireNonNull(e.getLocalizedMessage()));
         }
     }
 
-    public void add(View view) {
+    public void add(@SuppressWarnings("unused") View view) {
         Intent intent = new Intent(this, StudentActivity.class);
         startActivity(intent);
     }
@@ -128,24 +132,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("SetTextI18n")
     public void setAvgAge(String s) {
-        age_avg = db.rawQuery("SELECT AVG(age) FROM " + DBHelper.TABLE + " WHERE " + DBHelper.COLUMN_LASTNAME + " LIKE " + "'%" + s + "%'", null);
-        age_avg.moveToFirst();
-        ageAvg.setText("Средний возраст студентов: " + age_avg.getInt(0));
+        Cursor age = db.rawQuery("SELECT AVG(age) FROM " + DBHelper.TABLE + " WHERE " + DBHelper.COLUMN_LASTNAME + " LIKE " + "'%" + s + "%'", null);
+        age.moveToFirst();
+        ageAvg.setText(getString(R.string.avgageofstudent) + age.getInt(0));
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         db.close();
-        students.close();
     }
 
-    public void onClear(View v) {
+//    выделение обязательного, но не используемого параметра
+
+    public void onClear(@SuppressWarnings("unused") View v)  {
         try {
             db.execSQL("DELETE FROM " + DBHelper.TABLE);
         } catch (SQLException e) {
-            Log.e("mytag", e.getLocalizedMessage());
+            Log.e("mytag", Objects.requireNonNull(e.getLocalizedMessage()));
         }
         ageAvg.setText("Средний возраст студентов: ");
         adapter.changeCursor(db.rawQuery("SELECT * FROM students ORDER BY age", null));

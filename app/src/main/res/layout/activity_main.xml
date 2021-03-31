@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Поиск по фамилии" />
+        android:hint="@string/searchsurname"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="add"
-            android:text="Добавить студента" />
+            android:text="@string/addstudent"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/deleteButton"
@@ -32,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClear"
-            android:text="Очистить таблицу" />
+            android:text="@string/cleartable"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,51 +46,53 @@
         android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <TextView
             android:id="@+id/id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="orderBy"
-            android:text="id"
-            android:textSize="20dp" />
+            android:text="@string/id"
+            android:textSize="20sp" />
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/lastname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:onClick="orderBy"
-            android:text="Фамилия"
-            android:textSize="20dp" />
+            android:text="@string/surname"
+            android:textSize="20sp" />
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/firstname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:onClick="orderBy"
-            android:text="Имя"
-            android:textSize="20dp" />
+            android:text="@string/name"
+            android:textSize="20sp" />
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:onClick="orderBy"
-            android:text="Группа"
-            android:textSize="20dp" />
+            android:text="@string/group"
+            android:textSize="20sp" />
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:onClick="orderBy"
-            android:text="Лет"
-            android:textSize="20dp" />
+            android:text="@string/age"
+            android:textSize="20sp" />
     </LinearLayout>
+<!--    Удалила устаревшие/уже не используемые параметры-->
 
     <ListView
         android:id="@+id/studentList"
@@ -97,9 +104,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Средний возраст студентов: "
-        android:textSize="21dp"
+        android:text="@string/avgage"
+        android:textSize="21sp"
         android:layout_marginBottom="30dp"/>
+
+<!--   вынесла текст в строковый ресурс-->
+
+
 
 
 

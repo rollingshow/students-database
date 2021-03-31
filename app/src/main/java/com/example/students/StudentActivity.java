@@ -13,12 +13,8 @@ import android.widget.EditText;
 
 public class StudentActivity extends AppCompatActivity {
 
-    EditText fnameBox;
-    EditText lnameBox;
-    EditText groupBox;
-    EditText ageBox;
-    Button delButton;
-    Button saveButton;
+    EditText fnameBox, lnameBox, groupBox, ageBox;
+//    удалила неиспользуемые переменные, те перменные, которые используются локально, перенесла в функции
 
     DBHelper sqlHelper;
     SQLiteDatabase db;
@@ -35,8 +31,8 @@ public class StudentActivity extends AppCompatActivity {
         lnameBox = findViewById(R.id.lastnameEdit);
         groupBox = findViewById(R.id.groupEdit);
 
-        delButton = findViewById(R.id.deleteButton);
-        saveButton = findViewById(R.id.saveButton);
+       Button delButton = findViewById(R.id.deleteButton);
+
 
         sqlHelper = new DBHelper(this);
         db = sqlHelper.getWritableDatabase();
@@ -64,7 +60,7 @@ public class StudentActivity extends AppCompatActivity {
 
     }
 
-    public void save(View view) {
+    public void save(@SuppressWarnings("unused") View view) {
         ContentValues cv = new ContentValues();
         cv.put(DBHelper.COLUMN_LASTNAME, lnameBox.getText().toString());
         cv.put(DBHelper.COLUMN_FIRSTNAME, fnameBox.getText().toString());
@@ -79,7 +75,7 @@ public class StudentActivity extends AppCompatActivity {
         goHome();
     }
 
-    public void delete(View view) {
+    public void delete(@SuppressWarnings("unused") View view) {
         db.delete(DBHelper.TABLE, "_id = ?", new String[]{String.valueOf(userId)});
         goHome();
     }
